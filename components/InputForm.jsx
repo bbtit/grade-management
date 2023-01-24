@@ -1,4 +1,15 @@
+import { useEffect, useRef } from "react";
+
 export default function InputForm(props) {
+
+  const inputElement = useRef(null);
+
+  useEffect(() => {
+    if (inputElement.current) {
+      inputElement.current.focus();
+    }
+  },[]);
+
   return (
     <div>
 
@@ -9,7 +20,7 @@ export default function InputForm(props) {
       <div className="flex items-center justify-between mt-1">
 
         <div className="relative rounded-md shadow-sm">
-          <input type="text" value={props.text} onChange={props.handleChange} name="code" id="code" className="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="A0000"/>
+          <input type="text" value={props.text} onChange={props.handleChange} ref={inputElement} name="code" id="code" className="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="A0000"/>
 
           <div className="absolute inset-y-0 right-0 flex items-center">
             <label htmlFor="select-year" className="sr-only">
