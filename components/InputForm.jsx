@@ -10,6 +10,12 @@ export default function InputForm(props) {
     }
   },[]);
 
+  const refocus = () => {
+    if (inputElement.current) {
+      inputElement.current.focus();
+    }
+  };
+
   return (
     <div>
 
@@ -33,7 +39,13 @@ export default function InputForm(props) {
           </div>
         </div>
 
-        <button onClick={props.handleClick} className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 ml-2 rounded-lg">追加</button>
+        <button onClick={() => {
+          props.handleClick();
+          refocus();
+          }} 
+          className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 ml-2 rounded-lg">
+          追加
+        </button>
 
       </div>
     </div>
